@@ -1,61 +1,56 @@
-# goodbooks-10k
+# Recommender System Project
 
-This dataset contains six million ratings for ten thousand most popular (with most ratings) books. There are also:
+## Overview
+This project involves building a recommender system using both content-based and collaborative filtering techniques. The system is designed to predict user ratings for books based on historical rating data and book attributes.
 
-* books marked to read by the users
-* book metadata (author, year, etc.) 
-* tags/shelves/genres
+## Project Structure
+- **Content-Based Filtering**: Utilizes book metadata (such as author, tags) to compute similarity between books and recommend books similar to those a user has liked.
+- **Collaborative Filtering**: Uses user rating data to identify similar users or items and make recommendations based on the preferences of similar users.
 
-## Access
+## Dependencies
+- Python 3.x
+- Jupyter Notebook
+- Pandas
+- NumPy
+- Scikit-learn
+- SciPy
 
-Some of these files are quite large, so GitHub won't show their contents online. See [samples/](samples/) for smaller CSV snippets.
+## Getting Started
+1. **Clone the repository**:
+    ```sh
+    git clone https://github.com/EbrahemHassan132/goodbooks-10k.git
+    cd goodbooks-10k
+    ```
 
-Open the [notebook](quick_look.ipynb) for a quick look at the data. Download individual zipped files from [releases](https://github.com/zygmuntz/goodbooks-10k/releases).
+2. **Run the Jupyter notebook**:
+    ```sh
+    jupyter notebook Building_the_recommender_system.ipynb
+    ```
 
-The dataset is accessible from [Spotlight](https://maciejkula.github.io/spotlight/datasets/goodbooks.html), recommender software based on PyTorch.
+## Usage
+1. **Data Preprocessing**:
+    - Load and preprocess the book metadata and user rating data.
+    - Extract relevant features for content-based filtering.
 
-## Contents
+2. **Content-Based Filtering**:
+    - Compute the similarity matrix for books using features such as author and tags.
+    - Recommend books based on the similarity to books the user has rated highly.
 
-**ratings.csv** contains ratings sorted by time. It is 69MB and looks like that:
+3. **Collaborative Filtering**:
+    - Generate rating predictions for books using user-item interactions.
+    - Utilize k-nearest neighbors to identify similar users or items.
 
-	user_id,book_id,rating
-	1,258,5
-	2,4081,4
-	2,260,5
-	2,9296,5
-	2,2318,3
-	
-Ratings go from one to five. Both book IDs and user IDs are contiguous. For books, they are 1-10000, for users, 1-53424. 	
+4. **Testing and Evaluation**:
+    - Test the system by generating rating predictions for known and unknown books.
+    - Evaluate the performance by comparing predicted ratings with actual ratings.
 
-**to_read.csv** provides IDs of the books marked "to read" by each user, as _user_id,book_id_ pairs, sorted by time. There are close to a million pairs.
+## Example
+An example usage of the system is demonstrated in the notebook. Here are a few steps showcased:
+- Generating rating predictions for a user (e.g., user 10) based on their historical data.
+- Comparing predicted ratings with actual ratings for validation.
 
-**books.csv** has metadata for each book (goodreads IDs, authors, title, average rating, etc.). The metadata have been extracted from goodreads XML files, available in `books_xml`.
+## Contributing
+Contributions are welcome! Please fork the repository and submit pull requests for any enhancements or bug fixes.
 
-### Tags
-
-**book_tags.csv** contains tags/shelves/genres assigned by users to books. Tags in this file are represented by their IDs. They are sorted by _goodreads_book_id_ ascending and _count_ descending. 
-
-In raw XML files, tags look like this:
-
-	<popular_shelves>
-		<shelf name="science-fiction" count="833"/>
-		<shelf name="fantasy" count="543"/>
-		<shelf name="sci-fi" count="542"/>
-		...
-		<shelf name="for-fun" count="8"/>
-		<shelf name="all-time-favorites" count="8"/>
-		<shelf name="science-fiction-and-fantasy" count="7"/>	
-	</popular_shelves>
-
-Here, each tag/shelf is given an ID. **tags.csv** translates tag IDs to names.
-
-### goodreads IDs
-
-Each book may have many editions.  _goodreads_book_id_ and _best_book_id_ generally point to the most popular edition of a given book, while goodreads  _work_id_ refers to the book in the abstract sense. 
-
-You can use the goodreads book and work IDs to create URLs as follows:
-
-https://www.goodreads.com/book/show/2767052   
-https://www.goodreads.com/work/editions/2792775  
-
-Note that _book_id_ in **ratings.csv** and **to_read.csv** maps to _work_id_, not to _goodreads_book_id_, meaning that ratings for different editions are aggregated.
+## Acknowledgments
+- Thanks to the authors of the libraries and datasets used in this project.
