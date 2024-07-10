@@ -18,13 +18,8 @@ This project involves building a recommender system using both content-based and
 ## Getting Started
 1. **Clone the repository**:
     ```sh
-<<<<<<< HEAD
     git clone https://github.com/EbrahemHassan132/goodbooks-10k.git
     cd goodbooks-10k
-=======
-    git clone https://github.com/your-username/recommender-system.git
-    cd recommender-system
->>>>>>> 48a550e018f8ffecd891d6579812c394ef02b621
     ```
 
 2. **Run the Jupyter notebook**:
